@@ -19,19 +19,21 @@ export default class SearchView extends Component {
     }
 
     render() {
-        console.log(this.state.listProduct)
+        //console.log(this.state.listProduct)
         const { listProduct } = this.state;
         const {
             product, mainRight, txtMaterial, txtColor,
             txtName, txtPrice, productImage,
             txtShowDetail, showDetailContainer, wrapper
         } = styles;
+        const image = listProduct.map(e => console.log(e.image[0]) )
         return (
             <ScrollView style={wrapper}>
                 {
                     listProduct.map(e => (
                         <View style={product}>
-                            <Image style={productImage} source={e.image[0]} />
+
+                            <Image style={productImage} source={{uri : e.image[0]}} />
                             <View style={mainRight}>
                                 <Text style={txtName}>{e.category}</Text>
                                 <Text style={txtPrice}>{e.price}</Text>
