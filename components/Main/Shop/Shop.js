@@ -19,11 +19,11 @@ export default class Shop extends Component {
         this.state = {
             types: []
         }
-       
+        global.updateData = this.updateData.bind(this);
     }
 
     componentDidMount() {
-        return fetch('http://localhost:3000/post')
+        return fetch('http://localhost:4000/post')
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
@@ -38,11 +38,37 @@ export default class Shop extends Component {
                 console.error(error);
             });
     }
+    updateData = () => {
+        fetch('http://localhost:4000/post', {
+            method: 'GET',
+        })
+            .then(response => {
+                if (response.ok == false) {
+                    throw new Error("HTTP Code " + response.status + " - " + JSON.stringify(response.json()));
+                }
+                //console.log(response);
+                return response.json();
+
+            })
+            .then(json => {
+                console.log("product in app")
+                console.log(json)
+                this.setState({ types: json });
+                //console.log(this.state.products);
+            })
+            .catch(error => {
+                console.log("Error message:")
+                console.log(error.message)
+            });
+    }
 
     openMenu() {
         const { open } = this.props;
         open();
     }
+
+    
+
     render() {
         return (
             <View style={{ flex: 1 }}>

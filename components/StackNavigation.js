@@ -19,7 +19,7 @@ export default class StackNavigation extends Component {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Main">{props => <Main  {...props}></Main>}</Stack.Screen>
-          <Stack.Screen name="AuthDemo">{props => <AuthDemo apiURI='http://localhost:3000' {...props}></AuthDemo>}</Stack.Screen>
+          <Stack.Screen name="AuthDemo">{props => <AuthDemo apiURI='http://localhost:4000' {...props}></AuthDemo>}</Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     )

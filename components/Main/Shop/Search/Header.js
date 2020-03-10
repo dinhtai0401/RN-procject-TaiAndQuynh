@@ -15,7 +15,7 @@ export default class Header extends Component {
 
     onSearch(){
         const {txtSearch} = this.state;
-        return fetch('http://localhost:3000/post/' + txtSearch)
+        return fetch('http://localhost:4000/post/' + txtSearch)
             .then((response) => response.json())
             .then((responseJson) => {
                 global.setArraySearch(responseJson)
@@ -30,6 +30,8 @@ export default class Header extends Component {
                 console.error(error);
             });
     }
+    
+   
 
     render() {
         const { wapper, row1, textInput, iconStyle, titleStyle, warpperSearch, selectBox } = styles
@@ -48,7 +50,6 @@ export default class Header extends Component {
                         style={textInput} 
                         onChangeText={text => this.setState({txtSearch: text})}
                         onSubmitEditing={this.onSearch.bind(this)}
-                        
                         />
                 </View>
             </View>

@@ -16,7 +16,7 @@ export default class Home extends Component {
             <Stack.Navigator >
                 <Stack.Screen options={{
                     headerShown: false,
-                }} name="HomeView">{props => <HomeView navigator={this.props.navigation} types={this.props.types} {...props}></HomeView>}
+                }} name="HomeView">{props => <HomeView navigator={this.props.navigation} types={this.props.types} updateData={this.props.updateData} {...props}></HomeView>}
                 </Stack.Screen>
                 <Stack.Screen
                     options={{

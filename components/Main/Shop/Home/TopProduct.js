@@ -17,8 +17,8 @@ export default class Category extends Component {
         const { navigator } = this.props;
         navigator.navigate('ProductDetail', product)
     }
+    
     render() {
-
         const { productDate, container, iconStyle, body, productContainer, titleContainer, title, productName, productPrice } = styles
         return (
             <View style={container}>

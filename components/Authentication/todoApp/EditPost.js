@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { BaseRouter } from '@react-navigation/native';
+import { ScrollView } from 'react-native';
+import global from '../../History/global'
 
 
 const { height, width } = Dimensions.get('window');
@@ -16,7 +18,7 @@ export default class EditPost extends Component {
 
     componentDidMount() {
         console.log('getting todos');
-        fetch('http://localhost:3000/post/' + this.props.todos, {
+        fetch('http://localhost:4000/post/' + this.props.todos, {
             method: 'GET',
             headers: {
                 "Authorization": "Bearer " + this.props.jwt
@@ -43,25 +45,27 @@ export default class EditPost extends Component {
 
     onDelete(id) {
         console.log(id)
-        fetch('http://localhost:3000/post/' + id, {
+        fetch('http://localhost:4000/post/' + id, {
             method: 'DELETE',
             headers: {
                 "Authorization": "Bearer " + this.props.jwt
             }
         })
             .then(response => {
+                global.updateData();
                 if (response.ok == false) {
                     throw new Error("HTTP Code " + response.status + " - " + JSON.stringify(response.json()));
                 }
                 return response.json();
             })
             .then(json => {
+            
                 console.log("Todos GET successful")
                 console.log("Received following JSON");
                 console.log(json);
 
                 this.setState({ types: json })
-
+              
             })
             .catch(error => {
                 console.log("Error message:")
@@ -82,6 +86,8 @@ export default class EditPost extends Component {
 
         const { productDate, container, iconStyle, body, productContainer, titleContainer, title, productName, productPrice } = styles
         return (
+            <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
+
             <View style={container}>
                 <View style={titleContainer}>
                     <Text style={title}>My Product</Text>
@@ -120,6 +126,7 @@ export default class EditPost extends Component {
                     onPress={() => this.props.navigation.goBack()}
                 />
             </View>
+            </ScrollView>
         )
     }
 }
@@ -184,17 +191,3 @@ const styles = StyleSheet.create({
 })
 
 
-/*  {this.props.types.map(e => (
-    <View style={productContainer} >
-        <Swiper>
-            {e.image.map(image =>
-                <Image style={iconStyle} source={{ uri: `${image}` }} />
-            )}
-        </Swiper>
-        <TouchableOpacity onPress={() => this.gotoDetail(e)} key={e.id}>
-            <Text style={productName} >{e.category}</Text>
-            <Text style={productPrice} >{e.location}</Text>
-            <Text style={productDate} >{e.dataOfPosting}</Text>
-        </TouchableOpacity>
-    </View>
-))}*/

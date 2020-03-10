@@ -87,7 +87,7 @@ export default class TodoApp extends Component {
           options={{
             headerShown: false,
           }} >
-          {props => <AddPost {...props} todos={this.state.todos} onTodoAdd={this.onTodoAdd} />}
+          {props => <AddPost {...props} todos={this.state.todos} onTodoAdd={this.onTodoAdd} jwt={this.props.jwt} />}
         </Stack.Screen>
         <Stack.Screen name="EditPost" 
           options={{

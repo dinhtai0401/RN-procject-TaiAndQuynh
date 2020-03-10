@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import {
     View, Text, StyleSheet, Image, Dimensions, ScrollView, TouchableOpacity
 } from 'react-native';
+import global from '../../../History/global'
 
 
 
 
 
 export default class ProductDetail extends Component {
-
-
+    constructor(props){
+        super(props)
+  
+    }
+  
     render() {
         const {
             wrapper, cardStyle, header,

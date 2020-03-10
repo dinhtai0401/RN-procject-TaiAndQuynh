@@ -8,6 +8,7 @@ import SearchView from './SearchView'
 const Stack = createStackNavigator();
 
 export default class Search extends Component {
+
     render() {
         return (
             <Stack.Navigator>
