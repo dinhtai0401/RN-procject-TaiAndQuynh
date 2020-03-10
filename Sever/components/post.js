@@ -4,29 +4,28 @@ const multer = require('multer');
 const uuidv4 = require('uuid/v4');
 const passport = require("passport");
 
-
 var post = {
     posts: [{
-        "id" : 1,
+        "id": 1,
         "email": "admin",
-        "title" : "Car for new",
+        "title": "Car for new",
         "description": "Still new",
         "category": "Car",
         "location": "Oulu",
         "image": [
-            "http://localhost:4000/uploads/41c72e7e-0743-425b-ac69-03802c7f3f43-download-(2).jpeg",
+            "http://localhost:4000/uploads/1d15d8ee-89be-45ad-b946-4cd26c06ce61-download-(1).jpeg",
             "http://localhost:4000/uploads/41c72e7e-0743-425b-ac69-03802c7f3f43-download-(2).jpeg",
             "http://localhost:4000/uploads/0544fb27-4979-430c-8bd0-af1da840ff07-download.jpeg"
         ],
         "price": "400",
         "dataOfPosting": "01/02/2020",
-        "delivery" : "Shipping",
+        "delivery": "Shipping",
         "SellerOfName": "Anna - 01241325"
     },
     {
-        "id" : 2,
+        "id": 2,
         "email": "admin",
-        "title" : "Clothing for new",
+        "title": "Clothing for new",
         "description": "6 months",
         "category": "Clothing",
         "location": "Helsinki",
@@ -37,7 +36,7 @@ var post = {
         ],
         "price": "200",
         "dataOfPosting": "02/02/2020",
-        "delivery" : "Pickup",
+        "delivery": "Pickup",
         "SellerOfName": "Henkoi - 012413251"
     }]
 }
@@ -52,19 +51,19 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const resultPost = post.posts.filter(d => {
-        if (d.id === req.params.id) {
+        if (d.id == req.params.id) {
             return true;
         }
-        else if (d.email === req.params.id) {
+        else if (d.email == req.params.id) {
             return true;
         }
-        else if (d.category === req.params.id) {
+        else if (d.category == req.params.id) {
             return true;
         }
-        else if (d.location === req.params.id) {
+        else if (d.location == req.params.id) {
             return true;
         }
-        else if (d.dataOfPosting === req.params.id) {
+        else if (d.dataOfPosting == req.params.id) {
             return true;
         }
         else {
@@ -82,7 +81,7 @@ router.get('/:id', (req, res) => {
 
 // Post the single data
 
-const DIR = './uploads/';
+const DIR = './uploads';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -160,7 +159,7 @@ router.put('/:id', [upload.array('imgCollection', 4), passport.authenticate('jwt
     var yyyy = today.getFullYear();
 
     today = mm + '/' + dd + '/' + yyyy;
-    post.posts = post.posts.filter(post => post.id !== req.params.id);
+    post.posts = post.posts.filter(post => post.id != req.params.id);
     const newPost = {
         id: req.params.id,
         email: req.user.email,

@@ -59,8 +59,8 @@ export default class AddPost extends Component {
     postForm.append('delivery', this.state.delivery);
     postForm.append('SellerOfName', this.state.SellerOfName)
 
-    fetch({
-      method: 'PUT',
+    axios({
+      method: 'put',
       url: 'http://localhost:4000/post/' + this.props.route.params,
       data: postForm,
       headers: { "Authorization": "Bearer " + this.props.jwt }

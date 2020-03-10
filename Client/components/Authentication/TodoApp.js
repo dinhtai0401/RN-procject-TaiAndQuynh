@@ -36,9 +36,9 @@ export default class TodoApp extends Component {
       .then(json => {
         console.log("Todos GET successful")
         console.log("Received following JSON");
-        console.log(json.email);
+        console.log(json.user.email);
 
-        this.setState({ todos: json.email })
+        this.setState({ todos: json.user.email })
       })
       .catch(error => {
         console.log("Error message:")
