@@ -67,10 +67,10 @@ export default class AddPost extends Component {
     })
       .then(function (response) {
         global.updateData();
+        alert("Successfully")
       })
       .catch(function (response) {
         //handle error
-
       });
   }
 

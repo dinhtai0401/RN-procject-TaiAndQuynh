@@ -38,7 +38,7 @@ export default class Menu extends Component {
                 <Text style={{ color: '#FFF', fontFamily: 'Avenir', fontSize: 20 }}></Text>
                 <View style={{ marginTop: 60 }}>
                     <TouchableOpacity style={btnStyleSignIn} onPress={this.props.gotoAuthentication}>
-                        <Text style={btnTextSignIn}>Sign In</Text>
+                        <Text style={btnTextSignIn}>To Do Something</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={btnStyleSignIn} onPress={this.logoutClick.bind(this)}>
                         <Text style={btnTextSignIn}>Log out</Text>

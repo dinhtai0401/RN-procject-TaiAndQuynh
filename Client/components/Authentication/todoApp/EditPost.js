@@ -25,6 +25,7 @@ export default class EditPost extends Component {
                     types: responseJson,
                 }, function () {
                     global.updateData();
+                    
                 });
 
             })

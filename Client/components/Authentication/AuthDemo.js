@@ -31,7 +31,7 @@ export default class AuthDemo extends Component {
       .then(response => {
         console.log("SecureStore.getItemAsync success")
         this.setState({ activeJWT: response, isCheckingTokenStorage: false })
-        global.loginClick();
+        //global.loginClick();
       })
       .catch(error => {
         console.log("SecureStore.getItemAsync error")

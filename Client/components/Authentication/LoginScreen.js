@@ -16,7 +16,7 @@ const LoginScreen = (props) => {
       }
     })
       .then(response => {
-
+        global.loginClick();
         if (response.ok == false) {
           throw new Error("HTTP Code " + response.status + " - " + JSON.stringify(response.json()));
         }
